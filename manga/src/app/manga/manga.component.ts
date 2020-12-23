@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 export class MangaComponent implements OnInit {
   routeObs: Observable<ParamMap>;
   apiServiceObs: Observable<Object>;
-  pokemon : any;
+  manga : any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +26,10 @@ export class MangaComponent implements OnInit {
   }
   getRouterParam = (params: ParamMap) =>
   {
-    let name = params.get('name');
-    console.log (name);
-    this.apiServiceObs = this.service.get(name);
-    this.apiServiceObs.subscribe((data)=>this.pokemon = data)
+    let id = params.get('id');
+    console.log (id);
+    this.apiServiceObs = this.service.getManga(id);
+    this.apiServiceObs.subscribe((data)=>this.manga = data)
   }
 
     back() : void

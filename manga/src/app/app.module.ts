@@ -7,18 +7,20 @@ import { SearchComponent } from './search/search.component';
 import { MangaComponent } from './manga/manga.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AnimeComponent } from './anime/anime.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     MangaComponent,
-    HttpClientModule
+    AnimeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

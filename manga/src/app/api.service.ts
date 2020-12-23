@@ -8,15 +8,30 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  search(query: string) {
+  searchManga(query: string) {
     const url = `https://api.jikan.moe/v3/search/manga?q=${query}`;
     let obsTracks = this.http.get(url);
     console.log(obsTracks);
     return obsTracks;
   }
 
-  get(name: string) {
-    const url = `https://api.jikan.moe/v3/manga/${name}`;
+  getManga(id: string) {
+    const url = `https://api.jikan.moe/v3/manga/${id}`;
+    let obsTracks = this.http.get(url);
+    console.log(url);
+    console.log(obsTracks);
+    return obsTracks;
+  }
+
+  searchAnime(query: string) {
+    const url = `https://api.jikan.moe/v3/search/anime?q=${query}`;
+    let obsTracks = this.http.get(url);
+    console.log(obsTracks);
+    return obsTracks;
+  }
+
+  getAnime(id: string) {
+    const url = `https://api.jikan.moe/v3/anime/${id}`;
     let obsTracks = this.http.get(url);
     console.log(url);
     console.log(obsTracks);

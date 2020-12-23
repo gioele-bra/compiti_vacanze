@@ -1,15 +1,27 @@
-<div *ngIf="pokemon">
-  <div class="col-8">
-    <h1>{{ pokemon.name }}</h1>
-    <p>
-        <img src="" height="400px">
-    </p>
+<div *ngIf="manga">
 
-    <div class="text-primary">Height: </div>{{ pokemon.height }} m <br>
-    <div class="text-danger">Weight: </div>{{ pokemon.weight }} kg <br>
-    <div class="text-warning">Ability: </div>
-    <div *ngFor="let a of pokemon.abilities" class="text-muted">- {{ a.ability.name }}<br></div>
+  <div class="container-fluid">
 
-    <button href (click)="back()" class="btn-primary">Back</button>
+    <div class="row">
+      <div class="col">
+        <h1>{{ manga.title }}</h1>
+        <h4 class="text-muted">{{manga.title_japanese}}</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <img src="{{manga.image_url}}" height="400px">
+      </div>
+
+      <div class="col-10">
+        Status: <div class="text-muted">{{manga.status}}</div><br>
+        Score: <div class="text-muted">{{manga.score}}</div><br>
+        Popularity: <div class="text-muted">{{manga.popularity}}</div><br>
+        Members: <div class="text-muted">{{manga.members}}</div><br>
+        Synopsis: <div class="text-muted"><br>{{manga.synopsis}}</div><br>
+      </div>
+    </div>
+    <button (click)="back()" type="button" class="btn btn-primary">Back</button>
   </div>
 </div>

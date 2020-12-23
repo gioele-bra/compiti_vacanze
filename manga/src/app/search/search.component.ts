@@ -8,12 +8,12 @@ import { ApiService } from '../api.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-query: string;
+  query: string;
   obsTrack: Observable<Object>;
   results: any;
+  manga = true;
 
   constructor(public api: ApiService) {
-
   }
 
   submit(query: HTMLInputElement): void {
@@ -22,7 +22,7 @@ query: string;
       return;
     }
     this.query = query.value;
-    this.obsTrack = this.api.search(this.query);
+    if(this.manga){ this.obsTrack = this.api.searchManga(this.query); } else { this.obsTrack = this.api.searchAnime(this.query); }
     this.obsTrack.subscribe((data) => { this.results = data; console.log(this.results) });
   }
 
@@ -31,6 +31,10 @@ query: string;
     if (res && res.products && res.products) {
       this.results = res.products;
     }
+  }
+
+  switch(){
+    if(this.manga){ this.manga = false } else { this.manga = true };
   }
 
 }

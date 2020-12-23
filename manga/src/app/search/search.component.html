@@ -1,23 +1,57 @@
-<p>
-  <input type="text" #newquery>
-  <button (click)="submit(newquery)">Search</button>
-</p>
+<div class="container-fluid">
 
-<div *ngIf="results">
-  <div *ngIf="!results.pokemon || results.pokemon.length ==0">
-    No manga were found with the term '{{ query }}'
-  </div>
+  <div *ngIf="manga">
+    <h1 class="text-primary">Search Manga:</h1>
 
-  <div *ngIf="results.pokemon &&  results.pokemon.length > 0">
-    <div class="card-columns">
-      <div class="card" style="width:400px" *ngFor="let p of results.pokemon">
-        <img class="card-img-top img-responsive" src="" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">{{p.pokemon.name}}</h4>
-          <p class="card-text"></p>
-          <a href="#" [routerLink]="['/manga', p.pokemon.name]" class="btn btn-primary">See this Manga</a>
+    <input type="text" #newquery>
+    <button (click)="submit(newquery)" type="button" class="btn btn-primary ml-2">Search</button>
+    <button (click)="switch()" type="button" class="btn btn-primary ml-2">Switch Mode</button>
+
+    <div *ngIf="results">
+      <div *ngIf="!results.results || results.results.length ==0">
+        No manga were found with the term '{{ query }}'
+      </div>
+
+      <div *ngIf="results.results &&  results.results.length > 0">
+        <div class="card-columns">
+          <div class="card" style="width:400px" *ngFor="let m of results.results">
+            <img class="card-img-top img-responsive" src="{{m.image_url}}" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">{{m.title}}</h4>
+              <p class="card-text" >Chapter: {{m.chapters}}<br>Score:{{m.score}}<br>Synopsis: {{m.synopsis}}</p>
+              <a href="#" [routerLink]="['/manga', m.mal_id]" class="btn btn-primary">See this Manga</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div *ngIf="!manga">
+    <h1 class="text-primary">Search Anime:</h1>
+
+    <input type="text" #newquery>
+    <button (click)="submit(newquery)" type="button" class="btn btn-primary ml-2">Search</button>
+    <button (click)="switch()" type="button" class="btn btn-primary ml-2">Switch Mode</button>
+
+    <div *ngIf="results">
+      <div *ngIf="!results.results || results.results.length ==0">
+        No anime were found with the term '{{ query }}'
+      </div>
+
+      <div *ngIf="results.results &&  results.results.length > 0">
+        <div class="card-columns">
+          <div class="card" style="width:400px" *ngFor="let a of results.results">
+            <img class="card-img-top img-responsive" src="{{a.image_url}}" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">{{a.title}}</h4>
+              <p class="card-text">Episodes: {{a.episodes}}<br>Score:{{a.score}}<br>Synopsis: {{a.synopsis}}</p>
+              <a href="#" [routerLink]="['/anime', a.mal_id]" class="btn btn-primary">See this Anime</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
