@@ -1,0 +1,23 @@
+<p>
+  <input type="text" #newquery>
+  <button (click)="submit(newquery)">Search</button>
+</p>
+
+<div *ngIf="results">
+  <div *ngIf="!results.pokemon || results.pokemon.length ==0">
+    No manga were found with the term '{{ query }}'
+  </div>
+
+  <div *ngIf="results.pokemon &&  results.pokemon.length > 0">
+    <div class="card-columns">
+      <div class="card" style="width:400px" *ngFor="let p of results.pokemon">
+        <img class="card-img-top img-responsive" src="" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">{{p.pokemon.name}}</h4>
+          <p class="card-text"></p>
+          <a href="#" [routerLink]="['/manga', p.pokemon.name]" class="btn btn-primary">See this Manga</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

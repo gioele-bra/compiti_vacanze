@@ -1,0 +1,15 @@
+<div *ngIf="pokemon">
+  <div class="col-8">
+    <h1>{{ pokemon.name }}</h1>
+    <p>
+        <img src="" height="400px">
+    </p>
+
+    <div class="text-primary">Height: </div>{{ pokemon.height }} m <br>
+    <div class="text-danger">Weight: </div>{{ pokemon.weight }} kg <br>
+    <div class="text-warning">Ability: </div>
+    <div *ngFor="let a of pokemon.abilities" class="text-muted">- {{ a.ability.name }}<br></div>
+
+    <button href (click)="back()" class="btn-primary">Back</button>
+  </div>
+</div>
